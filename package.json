@@ -58,17 +58,20 @@
     "babel-eslint": "^7.2.3",
     "babel-plugin-async-to-promises": "^1.0.5",
     "eslint-plugin-flowtype": "^2.34.0",
-    "gulp-cli": "^1.3.0",
+    "gulp-cli": "^2.0.0",
     "gulp-flowtype": "^1.0.0",
     "jshint-sourcemap-reporter": "0.0.1",
     "mixwith": "~0.1.1",
     "request": "^2.81.0",
     "request-promise": "~4.1.1",
-    "semistandard": "^11.0.0"
+    "semistandard": "^12.0.1",
+    "snyk": "^1.88.0"
   },
   "scripts": {
     "prepublish": "gulp dist",
-    "start": "semistandard --fix"
+    "start": "semistandard --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "main": "./dist/cjs.js",
   "license": "Platform License",
@@ -93,5 +96,6 @@
       "flowtype"
     ],
     "parser": "babel-eslint"
-  }
+  },
+  "snyk": true
 }
