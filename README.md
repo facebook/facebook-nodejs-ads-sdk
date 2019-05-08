@@ -83,7 +83,8 @@ For now, we can use the <a href="https://developers.facebook.com/tools/explorer"
 ```javaScript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof);
 ```
 
 ### Api main class
@@ -112,7 +113,8 @@ You can access object properties like this:
 ```javaScript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof);
 const AdAccount = adsSdk.AdAccount;
 const Campaign = adsSdk.Campaign;
 const account = new AdAccount('act_<AD_ACCOUNT_ID>');
@@ -138,7 +140,8 @@ account
 ```javascript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 const AdAccount = adsSdk.AdAccount;
 const account = new AdAccount('act_<AD_ACCOUNT_ID>');
 account
@@ -157,7 +160,8 @@ Requesting an high number of fields may cause the response time to visibly incre
 ```javascript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 const AdAccount = adsSdk.AdAccount;
 const Campaign = adsSdk.Campaign;
 const account = new AdAccount('act_<AD_ACCOUNT_ID>');
@@ -181,7 +185,8 @@ account
 ```javascript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 const Campaign = adsSdk.Campaign;
 const campaignId = <CAMPAIGN_ID>;
 new Campaign(campaignId, {
@@ -195,7 +200,8 @@ new Campaign(campaignId, {
 ```javascript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 const Campaign = adsSdk.Campaign;
 const campaignId = <CAMPAIGN_ID>;
 new Campaign(campaignId).delete();
@@ -211,7 +217,8 @@ Here the `Cursor` is a superpowered `Array` (with all it's native helpful operat
 ```javascript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 const AdAccount = adsSdk.AdAccount;
 const Campaign = adsSdk.Campaign;
 const account = new AdAccount('act_<AD_ACCOUNT_ID>');
@@ -244,7 +251,8 @@ If you are using cursor to iterate all of your object under your Ad Account, thi
 ```javascript
 const adsSdk = require('facebook-nodejs-ads-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 const AdAccount = adsSdk.AdAccount;
 const account = new AdAccount('act_<AD_ACCOUNT_ID>');
 
@@ -266,7 +274,8 @@ A `FacebookAdsApi` object offers a debugging mode that will log all requests. To
 ```javascript
 const adsSdk = require('facebook-nodejs-business-sdk');
 const accessToken = '<VALID_ACCESS_TOKEN>';
-const api = adsSdk.FacebookAdsApi.init(accessToken);
+const appsecret_proof = '<VALID_APPSECRET_PROOF>'; //optional
+const api = adsSdk.FacebookAdsApi.init(accessToken, appsecret_proof)
 api.setDebug(true);
 ```
 
