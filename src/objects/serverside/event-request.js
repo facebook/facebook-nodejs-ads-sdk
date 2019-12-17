@@ -18,22 +18,21 @@ import ServerEvent from './server-event';
  */
 
 export default class EventRequest {
-
-	_events: Array;
 	_access_token: string;
-	_test_event_code: string;
 	_pixel_id: string;
+	_events: Array<ServerEvent> ;
+	_test_event_code: ?string;
 	_debug_mode: bool;
 	_api: Object
 
 	/**
 	 * @param {String} access_token Access Token for the user calling Graph API
 	 * @param {String} pixel_id Pixel Id to which you are sending the events
-	 * @param {Array} events data for the request Payload for a Server Side Event
+	 * @param {Array<ServerEvent>} events data for the request Payload for a Server Side Event
 	 * @param {String} test_event_code Test Event Code used to verify that your server events are received correctly by Facebook.
 	 * @param {Boolean} debug_mode_flag Set to true if you want to enable more logging in SDK
 	 */
-	constructor(access_token: string, pixel_id: string, events: Array = {}, test_event_code: string = null, debug_mode_flag: bool = false ) {
+	constructor(access_token: string, pixel_id: string, events: Array<ServerEvent> = [], test_event_code: ?string = null, debug_mode_flag: bool = false ) {
 
 		this._access_token = access_token;
 		this._pixel_id = pixel_id;
@@ -41,7 +40,7 @@ export default class EventRequest {
 		this._test_event_code = test_event_code;
 		this._debug_mode = debug_mode_flag;
 
-		this.api = FacebookAdsApi.init(this._access_token);
+		this._api = FacebookAdsApi.init(this._access_token);
 	}
 
 	/**
@@ -56,7 +55,7 @@ export default class EventRequest {
 	 * events is represented by a list/array of ServerEvent objects.
 	 * @param events for the current server event
 	 */
-	set events(events) {
+	set events(events: Array<ServerEvent>) {
 		this._events = events;
 	}
 
@@ -65,7 +64,7 @@ export default class EventRequest {
 	 * events is represented by a list/array of ServerEvent objects.
 	 * @param events for the current server event
 	 */
-	setEvents(events: Array) : EventRequest {
+	setEvents(events: Array<ServerEvent>) : EventRequest {
 		this._events = events;
 		return this;
 	}
@@ -87,7 +86,7 @@ export default class EventRequest {
 	 * Use this code to test your server events in the Test Events feature in Events Manager.
 	 * See Test Events Tool @see {@link https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api/using-the-api#testEvents} for an example.
 	 */
-	set test_event_code(test_event_code) {
+	set test_event_code(test_event_code: string) {
 		this._test_event_code = test_event_code;
 	}
 
@@ -114,7 +113,7 @@ export default class EventRequest {
 	 * Sets the debug mode flag for the Graph API request
 	 * @param debug_mode boolean value representing whether you want to send the request in debug mode to get detailed logging.
 	 */
-	set debug_mode(debug_mode) {
+	set debug_mode(debug_mode: boolean) {
 		this._debug_mode = debug_mode;
 	}
 
@@ -138,7 +137,7 @@ export default class EventRequest {
 	 * Sets the access token for the Graph API request
 	 * @param access_token string representing the access token that is used to make the Graph API.
 	 */
-	set access_token(access_token) {
+	set access_token(access_token: string) {
 		this._access_token = access_token;
 	}
 
@@ -162,7 +161,7 @@ export default class EventRequest {
 	 * Sets the pixel against which we send the events
 	 * @param {String} pixel string value representing whether you want to send the request in debug mode to get detailed logging.
 	 */
-	set pixel_id(pixel_id) {
+	set pixel_id(pixel_id: string) {
 		this._pixel_id = pixel_id;
 	}
 
@@ -191,16 +190,13 @@ export default class EventRequest {
 		}
 
 		if (this.debug_mode) {
-			this.api.setDebug(true);
+			this._api.setDebug(true);
 		}
 
 
 		params = {
 			'data': normalized_events,
-		}
-
-		if (this.test_event_code) {
-			params['test_event_code'] = this.test_event_code;
+			'test_event_code' : this.test_event_code
 		}
 
 		const response = (new AdsPixel(this._pixel_id)).createEvent(

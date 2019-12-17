@@ -44,7 +44,7 @@ export default class Content {
 	 * @param id A string representing the unique Id for the product.
 	 * Example: XYZ.
 	 */
-	set id(id)  {
+	set id(id: string)  {
 		this._id = id;
 	}
 
@@ -72,7 +72,7 @@ export default class Content {
 	 * @param quantity The number/quantity of the product that is being involved in the customer interaction.
 	 * Example: 5
 	 */
-	set quantity(quantity)  {
+	set quantity(quantity: number)  {
 		this._quantity = quantity;
 	}
 
@@ -100,7 +100,7 @@ export default class Content {
 	 * @param item_price The item_price or price per unit of the product.
 	 * Example: '123.45'
 	 */
-	set item_price(item_price)  {
+	set item_price(item_price: number)  {
 		this._item_price = item_price;
 	}
 

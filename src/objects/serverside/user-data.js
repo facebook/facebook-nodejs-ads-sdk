@@ -95,7 +95,7 @@ export default class UserData {
 	 * @param email An email address, in lowercase.
 	 * Example: joe@eg.com
 	 */
-	set email(email) {
+	set email(email: string) {
 		this._email = email;
 	}
 
@@ -123,7 +123,7 @@ export default class UserData {
 	 * @param phone A phone number. Include only digits with country code, area code, and number.
 	 * Example: 16505551212
 	 */
-	set phone(phone) {
+	set phone(phone: string) {
 		this._phone = phone;
 	}
 
@@ -151,7 +151,7 @@ export default class UserData {
 	 * @param gender Gender in lowercase. Either f for FEMALE or m for MALE.
 	 * Example: f
 	 */
-	set gender(gender) {
+	set gender(gender: string) {
 		this._gender = gender;
 	}
 
@@ -179,7 +179,7 @@ export default class UserData {
 	 * @param date_of_birth A date of birth given as year, month, and day in the Format YYYYMMDD
 	 * Example: 19971226 for December 26, 1997.
 	 */
-	set date_of_birth(date_of_birth) {
+	set date_of_birth(date_of_birth: string) {
 		this._date_of_birth = date_of_birth;
 	}
 
@@ -207,7 +207,7 @@ export default class UserData {
 	 * @param last_name is last name in lowercase.
 	 * Example: smith
 	 */
-	set last_name(last_name) {
+	set last_name(last_name: string) {
 		this._last_name = last_name;
 	}
 
@@ -235,8 +235,8 @@ export default class UserData {
 	 * @param first_name is first name in lowercase.
 	 * Example: joe
 	 */
-	set first_name(first_name) {
-		this._last_name = last_name;
+	set first_name(first_name: string) {
+		this._first_name = first_name;
 	}
 
 	/**
@@ -245,7 +245,7 @@ export default class UserData {
 	 * Example: joe
 	 */
 	setFirstName(first_name: string) : UserData {
-		this._last_name = last_name;
+		this._first_name = first_name;
 		return this;
 	}
 
@@ -263,7 +263,7 @@ export default class UserData {
 	 * @param city is city in lower-case without spaces or punctuation.
 	 * Example: menlopark
 	 */
-	set city(city) {
+	set city(city: string) {
 		this._city = city;
 	}
 
@@ -291,7 +291,7 @@ export default class UserData {
 	 * @param zip is a five-digit zip code for United States.For other locations, follow each country's standards.
 	 * Example: 98121 (for United States Zipcode)
 	 */
-	set zip(zip) {
+	set zip(zip: string) {
 		this._zip = zip;
 	}
 
@@ -319,7 +319,7 @@ export default class UserData {
 	 * @param state is state in lower-case without spaces or punctuation.
 	 * Example: ca
 	 */
-	set state(state) {
+	set state(state: string) {
 		this._state = state;
 	}
 
@@ -347,7 +347,7 @@ export default class UserData {
 	 * @param country is A two-letter country code in lowercase.
 	 * Example: usa
 	 */
-	set country(country) {
+	set country(country: string) {
 		this._country = country;
 	}
 
@@ -379,7 +379,7 @@ export default class UserData {
 	 * If External ID is being sent via other channels, then it should be sent in the same format via the server-side API
 	 * @see {@link https://www.facebook.com/business/help/104039186799009}
 	 */
-	set external_id(external_id) {
+	set external_id(external_id: string) {
 		this._external_id = external_id;
 	}
 
@@ -408,7 +408,7 @@ export default class UserData {
 	 * Sets the client ip address for the user data.
 	 * @param client_ip_address is the IP address of the browser corresponding to the event.
 	 */
-	set client_ip_address(client_ip_address) {
+	set client_ip_address(client_ip_address: string) {
 		this._client_ip_address = client_ip_address;
 	}
 
@@ -433,7 +433,7 @@ export default class UserData {
 	 * Sets the client user agent for the user data.
 	 * @param client_user_agent is the user agent for the browser corresponding to the event.
 	 */
-	set client_user_agent(client_user_agent) {
+	set client_user_agent(client_user_agent: string) {
 		this._client_user_agent = client_user_agent;
 	}
 
@@ -462,7 +462,7 @@ export default class UserData {
 	 * See Managing fbc and fbp Parameters for how to get this value @see {@link https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api/parameters#fbc},
 	 * You can also generate this value from a fbclid query parameter.
 	 */
-	set fbc(fbc) {
+	set fbc(fbc: string) {
 		this._fbc = fbc;
 	}
 
@@ -492,7 +492,7 @@ export default class UserData {
 	 * @param fbp is Facebook browser ID value stored in the _fbp browser cookie under your domain.
 	 * See Managing fbc and fbp Parameters for how to get this value @see {@link https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api/parameters#fbc},
 	 */
-	set fbp(fbp) {
+	set fbp(fbp: string) {
 		this._fbp = fbp;
 	}
 
@@ -520,7 +520,7 @@ export default class UserData {
 	 * @param {String} subscription_id is the subscription ID for the user in this transaction. This is similar to the order ID for an individual product.
 	 * Example: anid1234.
 	 */
-	set subscription_id(subscription_id) {
+	set subscription_id(subscription_id: string) {
 		this._subscription_id = subscription_id;
 	}
 
@@ -529,7 +529,7 @@ export default class UserData {
 	 * @param {String} subscription_id is the subscription ID for the user in this transaction. This is similar to the order ID for an individual product.
 	 * Example: anid1234.
 	 */
-	setSubscriptionId(subscription_id) : UserData {
+	setSubscriptionId(subscription_id: string) : UserData {
 		this._subscription_id = subscription_id;
 		return this;
 	}

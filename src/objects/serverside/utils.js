@@ -7,12 +7,12 @@
  * @flow
  */
 
-const sha256 = require('js-sha256');
 
 const PHONE_NUMBER_IGNORE_CHAR_SET = /[\-@#<>'",; ]|\(|\)|\+|[a-z]/g;
 const PHONE_NUMBER_DROP_PREFIX_ZEROS = /^\+?0{0,2}/;
 const US_PHONE_NUMBER_REGEX = /^1\(?\d{3}\)?\d{7}$/;
 const INTL_PHONE_NUMBER_REGEX = /^\d{1,4}\(?\d{2,3}\)?\d{4,}$/;
+const sha256 = require('js-sha256');
 
 /**
  * ServerSideUtils contains the Utility modules used for sending Server Side Events
@@ -26,7 +26,7 @@ export default class ServerSideUtils {
    * @param  {String} [field] Key(Type) of Value to be normalized eg: 'em' for email field.
    * @return {String} Normalized and hashed value for the string.
    */
-  static normalizeAndHash(input: string, field: string) {
+  static normalizeAndHash(input: ?string, field: ?string) {
 
     if (field == null || input == null) {
       return null;
@@ -165,7 +165,7 @@ export default class ServerSideUtils {
     }
 
     if (phone_number.length < 7 || phone_number.length > 15) {
-      throw new Error("Invalid phone number format for the passed phone number:'" + phone + "'.Please check the passed phone number format.");
+      throw new Error("Invalid phone number format for the passed phone number:'" + phone_number + "'.Please check the passed phone number format.");
     }
 
     return phone_number;
@@ -205,7 +205,7 @@ export default class ServerSideUtils {
    * @param  {String} phone_number that has to be tested.
    * @return {Boolean} value if a number is represented international format
    */
-  static isInternationalPhoneNumber(phone_number) {
+  static isInternationalPhoneNumber(phone_number: string) {
 
     // strip up to 2 leading 0s and +
     phone_number = phone_number.replace(PHONE_NUMBER_DROP_PREFIX_ZEROS, '');
@@ -226,7 +226,7 @@ export default class ServerSideUtils {
    * @param  {String} [input] String to be hashed
    * @return {String} SHA 256 Hash of the string
    */
-  static tosha256(input: string) {
+  static tosha256(input: ?string) {
     if (input === null)
       return input;
 

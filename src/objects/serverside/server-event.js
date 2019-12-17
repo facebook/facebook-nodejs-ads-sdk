@@ -33,7 +33,7 @@ export default class ServerEvent {
 	 * @param {UserData} user_data A map that contains user data. See UserData Class for options.
 	 * @param {CustomData} custom_data A map that contains user data. See CustomData Class for options.
 	 */
-	constructor(event_name: string, event_time: int, event_source_url: string, user_data: UserData, custom_data: CustomData, event_id: string, opt_out: boolean) {
+	constructor(event_name: string, event_time: number, event_source_url: string, user_data: UserData, custom_data: CustomData, event_id: string, opt_out: boolean) {
 
 		this._event_name = event_name;
 		this._event_time = event_time;
@@ -55,7 +55,7 @@ export default class ServerEvent {
 	 * Sets the Event Name for the current Event.
 	 * @param {String} event_name a Facebook pixel Standard Event or Custom Event name.
 	 */
-	set event_name(event_name) {
+	set event_name(event_name: string) {
 		this._event_name = event_name;
 	}
 
@@ -103,7 +103,7 @@ export default class ServerEvent {
 	 * Sets the browser url source for the current event.
 	 * @param {String} event_source_url The browser URL where the event happened.
 	 */
-	set event_source_url(event_source_url) {
+	set event_source_url(event_source_url: string) {
 		this._event_source_url = event_source_url;
 	}
 
@@ -128,7 +128,7 @@ export default class ServerEvent {
 	 * @param {String} event_id can be any string chosen by the advertiser. This is used with event_name to determine if events are identical.Learn about Deduplicate Pixel and Server-Side Events
 	 * @see {@link https://developers.facebook.com/docs/marketing-api/server-side-api/using-the-api#dedup}
 	 */
-	set event_id(event_id) {
+	set event_id(event_id: string) {
 		this._event_id = event_id;
 	}
 
@@ -153,7 +153,7 @@ export default class ServerEvent {
 	 * Sets the opt_out feature for the current event.
 	 * @param {Boolean} opt_out is a boolean flag that indicates we should not use this event for ads delivery optimization. If set to true, we only use the event for attribution.
 	 */
-	set opt_out(opt_out) {
+	set opt_out(opt_out: boolean) {
 		this._opt_out = opt_out;
 	}
 
@@ -179,7 +179,7 @@ export default class ServerEvent {
 	 * @param {UserData} user_data user_data is a map that contains user data. See User Data Parameter Table for options. Also see Advanced Matching with the Pixel to see comparable options available for data sent via Facebook pixel.
 	 * @see {@link https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api/parameters#user}
 	 */
-	set user_data(user_data) {
+	set user_data(user_data: UserData) {
 		this._user_data = user_data;
 	}
 
@@ -206,7 +206,7 @@ export default class ServerEvent {
 	 * @param {CustomData} custom_data is a map that includes additional business data about the event.
 	 * @see {@link https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api/parameters#custom}
 	 */
-	set custom_data(custom_data) {
+	set custom_data(custom_data: CustomData) {
 		this._custom_data = custom_data;
 	}
 

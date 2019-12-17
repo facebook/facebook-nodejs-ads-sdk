@@ -18,15 +18,15 @@ import FacebookAdsApi from './../../api';
 export default class EventResponse {
 
 	_events_received: number;
-	_messages: Array;
+	_messages: Array<string>;
 	_fbtrace_id: string;
 
 	/**
 	 * @param {Number} _events_received
-	 * @param {Array} _messages
+	 * @param {Array<string>} _messages
 	 * @param {String} _fbtrace_id
 	 */
-	constructor(events_received: int, messages: Array, fbtrace_id: string)  {
+	constructor(events_received: number, messages: Array<string>, fbtrace_id: string)  {
 
 		this._events_received = events_received;
 		this._messages = messages;
@@ -47,7 +47,7 @@ export default class EventResponse {
 	 * events_received is represented by integer.
 	 * @param events_received representing the number of events received for the event Request
 	 */
-	set  events_received(events_received)  {
+	set  events_received(events_received: number)  {
 		this._events_received = events_received;
 	}
 
@@ -74,7 +74,7 @@ export default class EventResponse {
 	 * Sets the messages as array for the response received from Graph API.
 	 * @param messages in the event Response
 	 */
-	set messages(messages)  {
+	set messages(messages: Array<string>)  {
 		this._messages = messages;
 	}
 
@@ -82,7 +82,7 @@ export default class EventResponse {
 	 * Sets the messages as array for the response received from Graph API.
 	 * @param {Array} messages in the event Response
 	 */
-	setMessages(messages: Array)  : EventResponse {
+	setMessages(messages: Array<string>)  : EventResponse {
 		this._messages = messages;
         return this;
 	}
@@ -99,7 +99,7 @@ export default class EventResponse {
 	 * Sets the fbtrace_id for the response received from Graph API.
 	 * @param fbtrace_id in the event Response that can used for debugging purposes
 	 */
-	set fbtrace_id(fbtrace_id)  {
+	set fbtrace_id(fbtrace_id: string)  {
 		this._fbtrace_id = fbtrace_id;
 	}
 
