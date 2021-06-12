@@ -6,6 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export { default as Http } from './../src/http';
 export { default as FacebookAdsApi } from './../src/api';
 export { default as FacebookAdsApiBatch } from './../src/api-batch';
 export { default as AbstractCrudObject } from './abstract-crud-object';

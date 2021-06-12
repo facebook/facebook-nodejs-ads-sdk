@@ -54,5 +54,4 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
-# distribution packages
-dist/
+.idea/
