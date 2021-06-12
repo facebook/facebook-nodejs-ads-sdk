@@ -48,28 +48,26 @@ export default class Http {
     return new Promise((resolve, reject) => {
       const request = new window.XMLHttpRequest();
       request.open(method, url);
-      request.onload = function() {
+      request.onload = function () {
+        let response;
         try {
-          const response = JSON.parse(request.response);
-
-          if (request.status.toString() === HTTP_STATUS.OK) {
-            resolve(response);
-          } else {
-            reject(
-              new Error({
-                body: response,
-                status: request.status,
-              }),
-            );
-          }
+          response = JSON.parse(request.response);
         } catch (e) {
-          reject(
-            new Error({
-              body: request.responseText,
-              status: request.status,
-            }),
-          );
+          // JSON failed to parse. Create a placeholder response.
+          response = {
+            error: {
+              message: 'Failed to parse response JSON.',
+            }
+          };
+          reject(convertXhrErrorToRequestPromiseError(request, response));
+          return;
         }
+        if (request.status.toString() !== HTTP_STATUS.OK) {
+          reject(convertXhrErrorToRequestPromiseError(request, response));
+          return;
+        }
+        
+        resolve(response);
       };
       request.setRequestHeader('Content-Type', 'application/json');
       request.setRequestHeader('Accept', 'application/json');
@@ -125,4 +123,18 @@ export default class Http {
       throw response;
     });
   }
+}
+
+/**
+ * Converts the given XHR error to an error that looks like one that would
+ * be returned by the request-promise API.
+ * @param {XMLHttpRequest} request 
+ * @param {any} response 
+ */
+function convertXhrErrorToRequestPromiseError(request, response) {
+  return {
+    name: 'StatusCodeError',
+    error: response,
+    statusCode: request.status,
+  };
 }
