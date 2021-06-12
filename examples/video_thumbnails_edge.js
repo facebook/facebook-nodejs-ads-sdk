@@ -34,8 +34,8 @@ fields = [
 ];
 params = {
 };
-const thumbnailss = (new AdVideo(id)).getThumbnails(
+const thumbnails = (new AdVideo(id)).getThumbnails(
   fields,
   params
 );
-logApiCallResult('thumbnailss api call complete.', thumbnailss);
+logApiCallResult('thumbnails api call complete.', thumbnails);
