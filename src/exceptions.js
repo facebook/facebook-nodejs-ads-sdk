@@ -47,6 +47,14 @@ export class FacebookRequestError extends FacebookError {
   }
 }
 
+function isJsonString(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
 /**
  * Error response has several structures depended on called APIs or errors.
  * This method contructs and formats the response into the same structure for
@@ -75,7 +83,7 @@ function constructErrorResponse(response: Object) {
     if (response.name === STATUS_CODE_ERROR) {
       // Handle when we can get response error code
       body = response.error ? response.error : response;
-      body = typeof body === 'string' ? JSON.parse(body) : body;
+      body = typeof body === 'string' && isJsonString(body) ? JSON.parse(body) : body;
       // Construct an error message from subfields in body.error
       message = body.error.error_user_msg
         ? `${body.error.error_user_title}: ${body.error.error_user_msg}`
