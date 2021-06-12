@@ -100,20 +100,32 @@ export default class Cursor extends Array<Object> {
     };
 
     this._buildObjectsFromResponse = response => {
-      return response.data.map(item => {
+      if (typeof response.data === 'object') {
         let That: any = this._targetClass;
-        if (That.name === 'AbstractObject') {
-          var result = new That();
-          result.setData(item);
-          return result;
-        }
-        return new That(
-          item && item.id ? item.id : null,
-          item,
+        const result = new That(
+          response.data && response.id ? response.id : null,
+          response.data,
           undefined,
           this._api,
         );
-      });
+        const returnResponse = [result];
+        return returnResponse;
+      } else {
+        return response.data.map(item => {
+          let That: any = this._targetClass;
+          if (That.name === 'AbstractObject') {
+            var result = new That();
+            result.setData(item);
+            return result;
+          }
+          return new That(
+            item && item.id ? item.id : null,
+            item,
+            undefined,
+            this._api,
+          );
+        });
+      }
     };
   }
 }
