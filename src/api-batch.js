@@ -96,13 +96,12 @@ class FacebookAdsApiBatch {
 
       if (method === 'GET') {
         relativeUrl += '?' + keyVals.join('&');
-      } else {
-        var body = keyVals.join('&');
       }
 
       if (params && params['name']) {
         var name = params['name'];
       }
+      var body = params['body']
     }
 
     // Handle attached files
@@ -111,13 +110,15 @@ class FacebookAdsApiBatch {
     }
 
     // A Call object that will be used in a batch request
-    const call = {
-      method: method,
-      relative_url: relativeUrl,
-      body: body,
-      name: name,
-      attachedFiles: attachedFiles,
-    };
+    var call = {};
+    call.method = method;
+    call.relative_url = relativeUrl,
+    call.body = body;
+    call.attachedFiles = attachedFiles
+    // add name parameter only if the batch request contains name
+    if (name) {
+      call.name = name;
+    }
 
     this._batch.push(call);
     this._files.push(files);
